@@ -1,0 +1,26 @@
+version: "3"
+
+services: 
+  webgoat: 
+    image: webgoat/webgoat-8.0:latest
+    container_name: webgoat
+    environment:
+      - discovery.type=single-node
+    ports: 
+      - 81:8080
+  
+  dvwa:
+    image: sagikazarmark/dvwa:latest
+    container_name: dvwa
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 80:80
+  
+  juiceshop:
+    image: bkimminich/juice-shop:latest
+    container_name: juiceshop
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 82:3000

@@ -24,3 +24,10 @@ services:
       - discovery.type=single-node
     ports:
       - 82:3000
+  phpldapadmin:
+    image: vulnerables/phpldapadmin-remote-dump:latest
+    container_name: phpldapadmin
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 83:80

@@ -17,7 +17,7 @@ services:
       - discovery.type=single-node
     ports:
       - 80:80
-    command: bash -c "apt-get update && apt install -y curl"
+    command: bash -c "apt-get update && apt install -y curl && /bin/bash"
   
   juiceshop:
     image: bkimminich/juice-shop:latest

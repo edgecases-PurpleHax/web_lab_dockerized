@@ -16,7 +16,7 @@ services:
       - discovery.type=single-node
     ports:
       - 80:80
-    command: apt-get update; apt install curl -y -qq
+    command: uname -a
   
   juiceshop:
     image: bkimminich/juice-shop:latest

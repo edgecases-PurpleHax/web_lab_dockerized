@@ -16,7 +16,7 @@ services:
       - discovery.type=single-node
     ports:
       - 80:80
-    command: whoami
+    command: apt-get update
   
   juiceshop:
     image: bkimminich/juice-shop:latest

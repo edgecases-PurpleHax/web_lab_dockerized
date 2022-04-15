@@ -11,7 +11,7 @@ services:
   
   dvwa:
     tty: true
-    image: sagikazarmark/dvwa:latest
+    image: rwils83/dvwa_with_curl:latest
     container_name: dvwa
     environment:
       - discovery.type=single-node

@@ -10,6 +10,7 @@ services:
       - 81:8080
   
   dvwa:
+    tty: true
     image: sagikazarmark/dvwa:latest
     container_name: dvwa
     environment:

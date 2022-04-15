@@ -16,7 +16,7 @@ services:
       - discovery.type=single-node
     ports:
       - 80:80
-    command: uname -a
+    command: whoami
   
   juiceshop:
     image: bkimminich/juice-shop:latest

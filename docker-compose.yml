@@ -41,65 +41,65 @@ services:
       networks:
         - datanet
 
-    database_admin:
-      container_name: database_admin
-      depends_on:
-        - database
-      image: webpwnized/mutillidae:database_admin
-      build:
-          context: ./database_admin
-          dockerfile: Dockerfile
-      ports:
-        - 84:80
-      networks:
-        - datanet
+  database_admin:
+    container_name: database_admin
+    depends_on:
+      - database
+    image: webpwnized/mutillidae:database_admin
+    build:
+        context: ./database_admin
+        dockerfile: Dockerfile
+    ports:
+      - 84:80
+    networks:
+      - datanet
 
-    www:
-      container_name: www
-      depends_on:
-        - database
-        - directory
-      image: webpwnized/mutillidae:www
-      build:
-          context: ./www
-          dockerfile: Dockerfile
-      ports:
-        - 85:80
-        - 8443:443
-      networks:
-        - datanet
-        - ldapnet
+  www:
+    container_name: www
+    depends_on:
+      - database
+      - directory
+    image: webpwnized/mutillidae:www
+    build:
+        context: ./www
+        dockerfile: Dockerfile
+    ports:
+      - 85:80
+      - 8443:443
+    networks:
+      - datanet
+      - ldapnet
 
-    directory:
-      container_name: directory
-      image: webpwnized/mutillidae:ldap
-      build:
-          context: ./ldap
-          dockerfile: Dockerfile
-      volumes:
-        - ldap_data:/var/lib/ldap
-        - ldap_config:/etc/ldap/slapd.d
-      networks:
-        - ldapnet
+  directory:
+    container_name: directory
+    image: webpwnized/mutillidae:ldap
+    build:
+        context: ./ldap
+        dockerfile: Dockerfile
+    volumes:
+      - ldap_data:/var/lib/ldap
+      - ldap_config:/etc/ldap/slapd.d
+    networks:
+      - ldapnet
 
-    directory_admin:
-      container_name: directory_admin
-      depends_on:
-        - directory
-      image: webpwnized/mutillidae:ldap_admin
-      build:
-          context: ./ldap_admin
-          dockerfile: Dockerfile
-      ports:
-        - 86:80
-      networks:
-        - ldapnet
+  directory_admin:
+    container_name: directory_admin
+    depends_on:
+      - directory
+    image: webpwnized/mutillidae:ldap_admin
+    build:
+        context: ./ldap_admin
+        dockerfile: Dockerfile
+    ports:
+      - 86:80
+    networks:
+      - ldapnet
 
   volumes:
     ldap_data:
     ldap_config:
 
-  # Create network segments for the containers to use
+# Create network segments for the containers to use
   networks:
-      datanet:
-      ldapnet:
+    datanet:
+    ldapnet:

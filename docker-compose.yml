@@ -32,17 +32,16 @@ services:
       - discovery.type=single-node
     ports:
       - 83:80
-  vAmPI:
-    imgage: erev0s/vampi
-    container_name: vampi
-    environment:
-      - discovery.type=single-node
-    ports:
-      - 84:5001
-  vAmPISecure:
+  vampi:
     image: erev0s/vampi
-    container_name: vampi_secure
-    environment: 
-      -discovery.type=single-node
+    environment:
+      - vulnerable=1
+    ports:
+      - 84:5000
+
+  vampi_secure:
+    image: erev0s/vampi
+    environment:
+      - vulnerable=0
     ports:
       - 85:5000
